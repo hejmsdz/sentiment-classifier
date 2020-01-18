@@ -5,10 +5,13 @@
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    const text = textarea.value;
+    if (text == '') {
+      return;
+    }
     button.disabled = true;
     const oldButtonText = button.innerHTML;
     button.innerHTML = 'Thinking...';
-    const text = textarea.value;
     fetch(`/prediction?text=${encodeURIComponent(text)}`)
       .then(response => response.json())
       .then((result) => {
