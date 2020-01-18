@@ -1,7 +1,7 @@
 import json
 import pickle
 
-from tensorflow.keras.preprocessing.text import tokenizer_from_json
+from keras_preprocessing.text import tokenizer_from_json
 from tensorflow.keras.preprocessing import sequence
 from tensorflow.keras.models import load_model
 
