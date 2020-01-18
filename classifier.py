@@ -1,5 +1,4 @@
 import json
-import pickle
 
 from keras_preprocessing.text import tokenizer_from_json
 from tensorflow.keras.preprocessing import sequence

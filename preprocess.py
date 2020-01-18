@@ -2,7 +2,6 @@ import re
 from nltk.tokenize.casual import casual_tokenize
 from nltk.stem import WordNetLemmatizer
 from nltk.tag import pos_tag
-from nltk.corpus import stopwords
 import string
 
 stops = {'in', 'of', 'at', 'a', 'the', 'to', 'on', 'and', 'it'}
