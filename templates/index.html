@@ -11,8 +11,10 @@
   <form action="prediction" id="form">
     <textarea name="text" id="text" placeholder="Type a piece of text to have it classified as positive or negative."></textarea>
     <button type="submit" id="button">Get prediction</button>
+    <output id="output">
+      I'm <span id="confidence"></span> sure it's <span id="category"></span>.
+    </output>
   </form>
-  <output id="output"></output>
 
   <script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>

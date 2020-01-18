@@ -5,6 +5,7 @@
 body {
   font-family: 'PT Sans', sans-serif;
   font-size: 18px;
+  color: #262626;
 }
 
 form {
@@ -12,7 +13,7 @@ form {
   margin: 90px auto;
 }
 
-textarea, button {
+textarea, button, output {
   width: 100%;
   font-family: inherit;
   font-size: inherit;
@@ -34,4 +35,31 @@ button {
   font-weight: bold;
   color: #fff;
   background: #2b7bde;
+  margin: 8px 0;
+}
+
+output {
+  display: none;
+  text-align: center;
+  color: #fff;
+}
+
+output.positive, output.neutral, output.negative {
+  display: block;
+}
+
+output.positive {
+  background: #4cb944;
+}
+
+output.neutral {
+  background: #262626;
+}
+
+output.negative {
+  background: #dc493a;
+}
+
+#confidence, #category {
+  font-weight: bold;
 }

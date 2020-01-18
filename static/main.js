@@ -1,4 +1,4 @@
-((form, textarea, button, output) => {
+((form, textarea, button, output, category, confidence) => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     button.disabled = true;
@@ -7,8 +7,10 @@
     const text = textarea.value;
     fetch(`/prediction?text=${encodeURIComponent(text)}`)
       .then(response => response.json())
-      .then(({ category, confidence }) => {
-        output.innerText = `I'm ${Math.round(confidence * 100)}% sure it's ${category}.`;
+      .then((result) => {
+        output.className = result.category;
+        category.innerHTML = result.category;
+        confidence.innerHTML = `${Math.round(result.confidence * 100)}%`;
       })
       .finally(() => {
         button.disabled = false;
@@ -20,4 +22,6 @@
   document.getElementById('text'),
   document.getElementById('button'),
   document.getElementById('output'),
+  document.getElementById('category'),
+  document.getElementById('confidence'),
 );
