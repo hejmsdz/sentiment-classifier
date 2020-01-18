@@ -21,7 +21,7 @@ class Classifier:
     
     def load_model(self, path):
         self.model = load_model(path)
-        self.max_words = self.model.input.shape[1]
+        self.max_words = int(self.model.input.shape[1])
     
     def classify(self, text):
         text = preprocess(text)
