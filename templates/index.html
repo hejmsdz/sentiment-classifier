@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sentiment classifier</title>
+</head>
+<body>
+  <form action="prediction" id="form">
+    <textarea name="text" id="text"></textarea>
+    <button type="submit" id="button">Get prediction</button>
+  </form>
+  <output id="output"></output>
+
+  <script>
+((form, textarea, button, output) => {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    button.disabled = true;
+    const oldButtonText = button.innerHTML;
+    button.innerHTML = 'Thinking...';
+    const text = textarea.value;
+    fetch(`/prediction?text=${encodeURIComponent(text)}`)
+      .then(response => response.json())
+      .then(({ category, confidence }) => {
+        output.innerText = `I'm ${Math.round(confidence * 100)}% sure it's ${category}.`;
+      })
+      .finally(() => {
+        button.disabled = false;
+        button.innerHTML = oldButtonText;
+      });
+  })
+})(
+  document.getElementById('form'),
+  document.getElementById('text'),
+  document.getElementById('button'),
+  document.getElementById('output'),
+);  
+  </script>
+</body>
+</html>
