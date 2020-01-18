@@ -2,6 +2,12 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'PT Sans', sans-serif;
   font-size: 18px;
@@ -9,8 +15,12 @@ body {
 }
 
 form {
-  max-width: 512px;
-  margin: 90px auto;
+  height: 100%;
+  max-width: 532px;
+  margin: auto;
+  padding: 90px 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 textarea, button, output {
@@ -24,6 +34,8 @@ textarea, button, output {
 
 textarea {
   background: #fafafa;
+  min-height: 5em;
+  flex-grow: 1;
 }
 
 textarea:focus {
@@ -40,6 +52,10 @@ button {
 
 .predicted button {
   display: none;
+}
+
+button, output {
+  flex-grow: 0;
 }
 
 output {
