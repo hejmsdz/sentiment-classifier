@@ -32,6 +32,3 @@ class Classifier:
         category_name = self.CATEGORIES[category_index]
         confidence = float(probabilities[category_index])
         return category_name, confidence
-
-
-
