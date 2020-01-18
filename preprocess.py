@@ -1,6 +1,5 @@
 import re
 from nltk.tokenize.casual import casual_tokenize
-from nltk.stem.porter import PorterStemmer
 from nltk.stem import WordNetLemmatizer
 from nltk.tag import pos_tag
 from nltk.corpus import stopwords
@@ -10,7 +9,6 @@ stops = {'in', 'of', 'at', 'a', 'the', 'to', 'on', 'and', 'it'}
 stops.update(string.punctuation)
 stops.difference_update('?!')
 
-stemmer = PorterStemmer()
 lemmatizer = WordNetLemmatizer()
 
 def tag_for_lemmatizer(tag):
@@ -20,7 +18,7 @@ def tag_for_lemmatizer(tag):
         return 'v'
     return 'a'
 
-def preprocess(text, lemmatize=True):
+def preprocess(text):
     if not text or type(text) != str:
         return ''
 
@@ -36,16 +34,9 @@ def preprocess(text, lemmatize=True):
     text = re.sub(r"'re", ' are', text)
     
     words = [word for word in casual_tokenize(text) if word not in stops]
-    
-    if lemmatize:
-        words = [
-            lemmatizer.lemmatize(word, tag_for_lemmatizer(tag))
-            for word, tag in pos_tag(words)
-        ]
-    else:
-        words = [
-            stemmer.stem(word)
-            for word in words
-        ]
+    words = [
+        lemmatizer.lemmatize(word, tag_for_lemmatizer(tag))
+        for word, tag in pos_tag(words)
+    ]
     text = ' '.join(words)
     return text
