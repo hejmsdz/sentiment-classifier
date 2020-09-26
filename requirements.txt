@@ -3,4 +3,4 @@ gunicorn==20.0.4
 Keras==2.2.5
 Keras-Preprocessing==1.1.0
 nltk==3.4.5
-tensorflow==1.14.0
+tensorflow==1.15.4
